@@ -1,0 +1,89 @@
+<mvc:View controllerName="com.AssetReadFromExcel.controller.Main" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:u="sap.ui.unified">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="Asset Data">
+					<customHeader>
+						<Bar>
+							<contentMiddle>
+								<Label text="Asset Details"/>
+							</contentMiddle>
+							<contentRight>
+								
+							</contentRight>
+						</Bar>
+					</customHeader>
+					<content>
+						<Table items="{localModel>/items}" mode="MultiSelect">
+								<headerToolbar>
+									<OverflowToolbar>
+										<Title text="Assets" level="H2"/>
+										<ToolbarSpacer></ToolbarSpacer>
+										<u:FileUploader id="FileUploaderId" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+									icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/>
+										<Button	text="Copy Selected" press="onSubmit" />
+									</OverflowToolbar>
+								</headerToolbar>
+							<columns>
+								<Column>
+									<Label text="Company Code"/>
+								</Column>
+								<Column>
+									<Label text="Asset"/>
+								</Column>
+								<Column>
+									<Label text="Sub-number"/>
+								</Column>
+								<Column>
+									<Label text="Asset Class"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{localModel>Company Code}"/>
+										<Text text="{localModel>Asset}"/>
+										<Text text="{localModel>Sub-number}"/>
+										<Text text="{localModel>Asset Class}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<Table items="{localModel>/items2}" mode="None">
+								<headerToolbar>
+									<OverflowToolbar>
+										<Title text="Copied Assets" level="H2"/>
+									</OverflowToolbar>
+								</headerToolbar>
+							<columns>
+								<Column>
+									<Label text="Company Code"/>
+								</Column>
+								<Column>
+									<Label text="Asset"/>
+								</Column>
+								<Column>
+									<Label text="Sub-number"/>
+								</Column>
+								<Column>
+									<Label text="Asset Class"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{localModel>Company Code}"/>
+										<Text text="{localModel>Asset}"/>
+										<Text text="{localModel>Sub-number}"/>
+										<Text text="{localModel>Asset Class}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
